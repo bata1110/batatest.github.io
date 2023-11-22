@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hung Le Hung</title>
+  </head>
+
+  <body>
+    <h2 style="text-align: center">Form's Title</h2>
+    <form method="post" id="google-form">
+      <!-- Input Field name must match with google sheet Header -->
+      <h4>Ten tiem:</h4>
+      <input
+        style="width: 70%"
+        type="text"
+        name="Ten tiem"
+        placeholder="Type your business name here"
+      />
+
+      <h4>Dia chi:</h4>
+      <input
+        style="width: 70%"
+        name="Dia chi"
+        type="text"
+        placeholder="So nha + ten duong"
+      />
+      <h4>Zip:</h4>
+      <input
+        style="width: 30%"
+        type="text"
+        name="Zip"
+        maxlength="12"
+        placeholder="Enter your zip code here"
+      />
+      <h4>State:</h4>
+      <input
+        style="width: 30%"
+        type="text"
+        name="State"
+        placeholder="Example: IL "
+        maxlength="2"
+      />
+      <h4>Phone:</h4>
+      <input
+        style="width: 70%"
+        type="text"
+        name="Phone"
+        maxlength="11"
+        placeholder="Enter your phone number here"
+      />
+      <h4>Facebook:</h4>
+      <input
+        style="width: 70%"
+        type="text"
+        name="Facebook"
+        placeholder="Enter your Facebook name here"
+      />
+      <br />
+      <br />
+      <br />
+      <button style="align-items: center" type="submit" value="send">
+        Submit
+      </button>
+    </form>
+
+    <script>
+      // Get Form by its id
+      const form = document.getElementById("google-form");
+
+      // App Script url
+      const googleAppScriptUrl =
+        "https://script.google.com/macros/s/AKfycbxQgeM2mtiyJVg4__MdxLYi9qaUDR4UYKWExVDqzCuFs557Yi62StbL0YPt07hlA3Ec/exec";
+      // Fuction to send data to google form when submit button is clicked
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        try {
+          fetch(googleAppScriptUrl, {
+            method: "POST",
+            mode: "no-cors",
+            body: new FormData(form),
+          }).then(() => {
+            // Do someting After successfull submission
+            console.log("success");
+            alert("Successfully Submitted");
+            form.reset();
+          });
+        } catch (error) {
+          // Do something for the error case
+          console.log(error);
+        }
+      });
+    </script>
+  </body>
+</html>
