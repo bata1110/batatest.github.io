@@ -8,10 +8,10 @@
   </head>
 
   <body>
-    <h2 style="text-align: center">Form's Title</h2>
+    <h2 style="text-align: center">Thông tin người nhận quà</h2>
     <form method="post" id="google-form">
       <!-- Input Field name must match with google sheet Header -->
-      <h4>Ten tiem:</h4>
+      <h4>Tên tiệm:</h4>
       <input
         style="width: 70%"
         type="text"
@@ -19,7 +19,7 @@
         placeholder="Type your business name here"
       />
 
-      <h4>Dia chi:</h4>
+      <h4>Địa chỉ:</h4>
       <input
         style="width: 70%"
         name="Dia chi"
@@ -83,7 +83,7 @@
           }).then(() => {
             // Do someting After successfull submission
             console.log("success");
-            alert("Successfully Submitted");
+            alert("Công việC đã xong, Hùng xin cảm ơn cả nhà!!!");
             form.reset();
           });
         } catch (error) {
